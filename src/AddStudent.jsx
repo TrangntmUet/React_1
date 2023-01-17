@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import {v4 as uuidv4} from 'uuid';
 
-const AddStudent = ({listSV, addSinhVien}) => {
+const AddStudent = ({addSinhVien}) => {
     const [sv, setSinhVien] = useState({id:uuidv4(),  firstname:'', lastname: '', score:''});
 
     const listeningBtnAdd = () => {
@@ -14,7 +14,6 @@ const AddStudent = ({listSV, addSinhVien}) => {
         const tmpSinhvien = {...sv };
         tmpSinhvien[key] = value;
         setSinhVien(tmpSinhvien);
-
     }
 
     return (
@@ -22,15 +21,15 @@ const AddStudent = ({listSV, addSinhVien}) => {
             <form>
                 <div className="form-input">
                     <label for="exampleInputEmail1" className="form-label">Họ và tên đệm: </label>
-                    <input type="text" className="form-control"  onChange={(e) => changeSinhVien('firstName', e.target.value)} style={{width: "max-content"}}/>
+                    <input type="text" className="form-control"  onChange={(e) => changeSinhVien('firstname', e.target.value)} style={{width: "max-content"}}/>
                 </div>
                 <div className="form-input">
                     <label for="exampleInputPassword1" className="form-label">Tên: </label>
-                    <input type="text" className="form-control" onChange={(e) => addSv({...sv,lastName:e.target.value})} style={{width: "max-content"}} />
+                    <input type="text" className="form-control" onChange={(e) => changeSinhVien('lastname', e.target.value)} style={{width: "max-content"}} />
                 </div>
                 <div className="form-input">
                     <label for="exampleInputPassword1" className="form-label">Điểm số: </label>
-                    <input type="number" className="form-control" onChange={(e) => addSv({...sv,score:e.target.value})} style={{width: "max-content"}}/>
+                    <input type="number" className="form-control" onChange={(e) => changeSinhVien('score', e.target.value)} style={{width: "max-content"}}/>
                 </div>
                 <button type='reset' className="btn btn-primary" onClick={() => listeningBtnAdd()} style={{width: "max-content"}}>Thêm sinh viên</button>
             </form>

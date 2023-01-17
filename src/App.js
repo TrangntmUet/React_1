@@ -6,7 +6,7 @@ import TableStudent from './TableStudent';
 
 function App() {
   const [listSV, setListSV] = useState([])
-  console.log(listSV);
+  // console.log(listSV);
 
   const addSinhVien = (sv) => {
     const tmpSinhVien = [...listSV, sv];
@@ -15,7 +15,7 @@ function App() {
 
   const removeSinhVien = (_sv) => {
     const tmpSinhVien = [...listSV];
-    const svIndex = tmpSinhVien.indexOf(sv => sv.id ===  _sv.id);
+    const svIndex = tmpSinhVien.indexOf(_sv);
     if (svIndex > -1) {
       tmpSinhVien.splice(svIndex, 1);
       setListSV(tmpSinhVien);
@@ -25,10 +25,10 @@ function App() {
   return (
     <div className="Form">
       <div className='addForm'>
-        <AddStudent addSinhVien={(e) => addSinhVien(e)}/>
+        <AddStudent addSinhVien={addSinhVien}/>
       </div>
       <div className='tableStudent'>
-        <TableStudent listSV = {listSV} setListSV = {setListSV}/>
+        <TableStudent listSV={listSV} removeSinhVien={removeSinhVien}/>
       </div>
     </div>
   );
